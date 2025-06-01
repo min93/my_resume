@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rattapon Jehbao - System Engineer</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .resume {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+            animation: slideUp 0.8s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header .title {
+            font-size: 1.2em;
+            opacity: 0.9;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+            position: relative;
+            z-index: 1;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-2px);
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.2s; }
+        .section:nth-child(2) { animation-delay: 0.4s; }
+        .section:nth-child(3) { animation-delay: 0.6s; }
+        .section:nth-child(4) { animation-delay: 0.8s; }
+        .section:nth-child(5) { animation-delay: 1.0s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section h2 {
+            color: #2c3e50;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #3498db;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: #e74c3c;
+            border-radius: 2px;
+        }
+
+        .summary {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #555;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 5px solid #3498db;
+        }
+
+        .experience {
+            background: #fafafa;
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 5px solid #27ae60;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .experience:hover {
+            transform: translateX(5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .job-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .duration {
+            background: #3498db;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+        }
+
+        .company {
+            color: #7f8c8d;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+
+        .job-section {
+            margin-bottom: 20px;
+        }
+
+        .job-section h4 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border-top: 4px solid #3498db;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .skill-category:nth-child(2) { border-top-color: #e74c3c; }
+        .skill-category:nth-child(3) { border-top-color: #f39c12; }
+        .skill-category:nth-child(4) { border-top-color: #27ae60; }
+        .skill-category:nth-child(5) { border-top-color: #9b59b6; }
+
+        .skill-category h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        li {
+            padding: 8px 0;
+            color: #555;
+            position: relative;
+            padding-left: 20px;
+            transition: color 0.3s ease;
+        }
+
+        li:hover {
+            color: #2c3e50;
+        }
+
+        li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: #3498db;
+            font-size: 0.8em;
+        }
+
+        .education {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .degree {
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .university {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .objectives {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+
+        .highlight {
+            background: rgba(255,255,255,0.2);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .contact-info {
+                gap: 15px;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .job-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .print-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #3498db;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.2em;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .print-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.6);
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+            .resume {
+                box-shadow: none;
+                border-radius: 0;
+            }
+            .print-btn {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="resume">
+            <header class="header">
+                <h1>Rattapon Jehbao</h1>
+                <div class="title">SYSTEM ENGINEER</div>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>rattapon.j@outlook.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+66 84-508-8281</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Bangkok, Thailand</span>
+                    </div>
+                </div>
+            </header>
+
+            <div class="content">
+                <section class="section">
+                    <h2><i class="fas fa-user"></i> Professional Summary</h2>
+                    <div class="summary">
+                        Experienced System Engineer with <strong>8+ years</strong> of expertise in large-scale system implementation and automation. Proven track record of managing <strong>200-300+ devices nationwide</strong> across conference, IPTV, and digital signage systems. Specialized in Python-based automation solutions and currently expanding expertise into Machine Learning and AI to build intelligent systems that solve complex challenges.
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2><i class="fas fa-briefcase"></i> Professional Experience</h2>
+                    <div class="experience">
+                        <div class="job-header">
+                            <div class="job-title">System Engineer and Support Engineer</div>
+                            <div class="duration">2017 - Present (8+ Years)</div>
+                        </div>
+                        <div class="company">Seanet Asia Co.,Ltd.</div>
+                        
+                        <div class="job-section">
+                            <h4>Service & Maintenance Operations:</h4>
+                            <ul>
+                                <li>Managed comprehensive service operations including MA (Maintenance Agreement), PM (Preventive Maintenance), and CM (Corrective Maintenance) for 200-300+ devices nationwide</li>
+                                <li>Maintained service level agreements across distributed systems: Conference systems (on-premises/cloud), 2 IPTV systems, and 3 Digital signage systems</li>
+                                <li>Developed standardized maintenance procedures and documentation for consistent service delivery</li>
+                            </ul>
+                        </div>
+
+                        <div class="job-section">
+                            <h4>Process Automation & Tool Integration:</h4>
+                            <ul>
+                                <li>Designed and implemented Python-based automation tools for maintenance workflows, reducing manual service tasks and system downtime by 25%</li>
+                                <li>Integrated various monitoring and maintenance tools to streamline service operations</li>
+                                <li>Built custom solutions using available tools and APIs to enhance service efficiency and tracking</li>
+                                <li>Created automated reporting systems for maintenance schedules and service performance metrics</li>
+                            </ul>
+                        </div>
+
+                        <div class="job-section">
+                            <h4>Technical Implementation:</h4>
+                            <ul>
+                                <li>Led cross-functional teams in deploying modern AV and video conferencing systems</li>
+                                <li>Managed vendor coordination for large-scale system upgrades, ensuring optimized performance and compatibility across all locations</li>
+                                <li>Implemented network configurations and IP setups for distributed AV systems nationwide</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2><i class="fas fa-cogs"></i> Technical Skills</h2>
+                    <div class="skills-grid">
+                        <div class="skill-category">
+                            <h3><i class="fas fa-tv"></i> AV Systems & Integration</h3>
+                            <ul>
+                                <li>Audiovisual equipment integration and system design</li>
+                                <li>Multi-vendor AV system compatibility and protocol standardization</li>
+                                <li>Conference systems, IPTV infrastructure, digital signage technology</li>
+                                <li>Network-based AV control systems and centralized management</li>
+                            </ul>
+                        </div>
+
+                        <div class="skill-category">
+                            <h3><i class="fas fa-tools"></i> Service Management</h3>
+                            <ul>
+                                <li>MA/PM/CM management and execution</li>
+                                <li>Service Level Agreement (SLA) monitoring</li>
+                                <li>Multi-vendor coordination and parts procurement</li>
+                                <li>Technical support and rapid response resolution</li>
+                            </ul>
+                        </div>
+
+                        <div class="skill-category">
+                            <h3><i class="fas fa-code"></i> Programming & Automation</h3>
+                            <ul>
+                                <li>Python (automation, monitoring, scripting)</li>
+                                <li>Bash, PowerShell, VBScript scripting</li>
+                                <li>Selenium WebDriver, RPA</li>
+                                <li>Web technologies: HTML, CSS, JavaScript, PHP</li>
+                                <li>API integration and REST APIs</li>
+                            </ul>
+                        </div>
+
+                        <div class="skill-category">
+                            <h3><i class="fas fa-database"></i> Tools & Integration</h3>
+                            <ul>
+                                <li>Database management for service records</li>
+                                <li>Report generation and analytics</li>
+                                <li>Integration of disparate tools through APIs</li>
+                                <li>Custom solutions development</li>
+                            </ul>
+                        </div>
+
+                        <div class="skill-category">
+                            <h3><i class="fas fa-users"></i> Project Management</h3>
+                            <ul>
+                                <li>Cross-functional team coordination</li>
+                                <li>Vendor management for nationwide deployments</li>
+                                <li>Multi-site system integration</li>
+                                <li>Process standardization and documentation</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2><i class="fas fa-graduation-cap"></i> Education</h2>
+                    <div class="education">
+                        <div class="degree">Bachelor's Degree in Electronic Computer Technology</div>
+                        <div class="university">King Mongkut's University of Technology North Bangkok | Graduated: 2017</div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2><i class="fas fa-target"></i> Career Objectives</h2>
+                    <div class="objectives">
+                        Seeking opportunities in <span class="highlight">Platform Engineering</span>, <span class="highlight">Data Engineering</span>, or <span class="highlight">DevOps</span> roles where I can leverage my extensive service operations experience, tool integration skills, and process automation expertise to create efficient, scalable solutions. Ready to apply proven problem-solving abilities and continuous learning mindset to modern technical challenges.
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <button class="print-btn" onclick="window.print()" title="Print Resume">
+        <i class="fas fa-print"></i>
+    </button>
+
+    <script>
+        // Add smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Add typing effect to name
+        const nameElement = document.querySelector('.header h1');
+        const nameText = nameElement.textContent;
+        nameElement.textContent = '';
+        
+        let i = 0;
+        const typeWriter = () => {
+            if (i < nameText.length) {
+                nameElement.textContent += nameText.charAt(i);
+                i++;
+                setTimeout(typeWriter, 100);
+            }
+        };
+        
+        setTimeout(typeWriter, 500);
+    </script>
+</body>
+</html>
